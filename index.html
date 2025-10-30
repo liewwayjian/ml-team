@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>我们的 ML 小队 · 回忆与贡献</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="container">
+    <div class="brand">
+      <h1>我们的 ML 小队</h1>
+      <p class="tag">回忆 · 练习 · 团队配合</p>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="home" class="active">主页</button>
+      <button data-tab="team">队伍</button>
+      <button data-tab="matches">战绩</button>
+      <button data-tab="timeline">时间轴</button>
+      <button data-tab="gallery">相册</button>
+      <button data-tab="thanks">贡献</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="home" class="tab-pane active">
+      <h2>欢迎来到我们的基地</h2>
+      <p>这里记录我们一起打 ML 的点点滴滴：战术、配合、复盘、笑点和成长。</p>
+      <div class="cards">
+        <div class="card">
+          <h3>今日口号</h3>
+          <p>“不迷路、不分散、吃完龟要推进！”</p>
+        </div>
+        <div class="card">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="#team">队伍与位置</a></li>
+            <li><a href="#matches">战术与战绩</a></li>
+            <li><a href="#timeline">成长时间轴</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="tab-pane">
+      <h2>队伍与位置</h2>
+      <table class="table">
+        <thead><tr><th>成员</th><th>定位</th><th>惯用英雄</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>队友A</td><td>射手</td><td>—</td><td>待补充</td></tr>
+          <tr><td>队友B</td><td>战士</td><td>—</td><td>待补充</td></tr>
+          <tr><td>队友C</td><td>坦克/辅助</td><td>—</td><td>待补充</td></tr>
+          <tr><td>队友D</td><td>法师</td><td>—</td><td>待补充</td></tr>
+          <tr><td>队友E</td><td>打野/战士</td><td>—</td><td>待补充</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">提示：点击右上角 “Edit” 可以在 GitHub 直接修改这份网页的数据。</p>
+    </section>
+
+    <section id="matches" class="tab-pane">
+      <h2>战术与战绩</h2>
+      <ul class="bullets">
+        <li><strong>无打野阵容：</strong>双战士分线压塔，射手吃安全资源，坦辅护龙/护龟。</li>
+        <li><strong>拿龟/开团后：</strong>立刻就近推塔或控资源，<em>不要在野区乱走</em>。</li>
+        <li><strong>视野：</strong>草丛插眼位（辅助/坦克），避免被反蹲。</li>
+      </ul>
+      <div class="log" id="matchLog">
+        <!-- 你可以在 js/app.js 中编辑初始战绩数据 -->
+      </div>
+    </section>
+
+    <section id="timeline" class="tab-pane">
+      <h2>成长时间轴</h2>
+      <ol class="timeline" id="timelineList">
+        <!-- 动态渲染 -->
+      </ol>
+    </section>
+
+    <section id="gallery" class="tab-pane">
+      <h2>相册</h2>
+      <p>把图片放进 <code>assets/</code> 文件夹，然后在下面数组里添加图片名即可。</p>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+
+    <section id="thanks" class="tab-pane">
+      <h2>贡献与致谢</h2>
+      <p>上传录像、写战术、做图、记录复盘的每一位队员，都是最棒的！</p>
+      <ul id="thanksList"></ul>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>Made with ❤️ by our ML squad · Hosted on GitHub Pages</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
