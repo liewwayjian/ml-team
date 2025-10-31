@@ -1,3 +1,28 @@
+// === 队员资料（以后只改这里） ===
+const team = [
+  { name: 'William', role: '射手', heroes: 'miya，obsidia', note: '' },
+  { name: 'alex',    role: '战士', heroes: 'minsitthar，akai', note: '' },
+  { name: 'wei jie', role: '辅助', heroes: 'Thamuz', note: '' },
+  { name: 'desmond', role: '打野', heroes: 'Alucard', note: '' },
+  { name: 'Den',     role: '战士', heroes: 'chou', note: '' },
+];
+
+// （可选）按角色顺序排序：射手→战士→辅助→法师→打野
+const order = ['射手','战士','辅助','法师','打野'];
+team.sort((a,b) => order.indexOf(a.role) - order.indexOf(b.role));
+
+// 渲染到“队伍与位置”表格
+const teamTableBody = document.querySelector('#team .table tbody');
+if (teamTableBody) {
+  teamTableBody.innerHTML = team.map(p => `
+    <tr>
+      <td>${p.name}</td>
+      <td>${p.role}</td>
+      <td>${p.heroes}</td>
+      <td>${p.note || ''}</td>
+    </tr>
+  `).join('');
+}
 // 简单的 Tab 切换
 const tabs = document.querySelectorAll('#tabs button');
 const panes = document.querySelectorAll('.tab-pane');
