@@ -1,0 +1,331 @@
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>我们的小队 · 回忆与贡献</title>
+  <meta name="description" content="Mobile Legends 小队的战况记录、队友贡献、里程碑与相册。" />
+  <style>
+    :root{
+      --bg:#0b0d10;--card:#141820;--muted:#9aa4b2;--text:#e6edf3;--accent:#6ee7ff;--accent2:#8b5cf6;--ok:#10b981;--warn:#f59e0b;--err:#ef4444;
+      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#0b0d10,#0e1117);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,emoji;}
+    a{color:var(--accent)}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(120%) blur(6px);background:rgba(11,13,16,.6);border-bottom:1px solid #1f2733;z-index:10}
+    nav{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 120deg,var(--accent),var(--accent2));box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .tab{padding:8px 12px;border-radius:999px;background:#131722;border:1px solid #21293a;color:#c7d2fe;cursor:pointer}
+    .tab:hover{border-color:#2f3b52}
+    .hero{padding:56px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .hero .card{border:1px solid #1f2733;background:radial-gradient(1200px 600px at -20% -40%,rgba(110,231,255,.08),transparent),var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    h2.section{margin:34px 0 16px;font-size:22px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{border:1px solid #1f2733;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#0f172a;border:1px solid #223047;color:#8ab4ff;font-size:12px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap}
+    .kpi{flex:1;min-width:160px;padding:16px;border-radius:14px;background:#0f1420;border:1px solid #1f2733}
+    .kpi b{font-size:24px}
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .muted{color:var(--muted)}
+    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0a0a0a;font-weight:600;display:inline-block;text-decoration:none;border:none;cursor:pointer}
+    .btn.ghost{background:#0f1420;color:#cde7ff;border:1px solid #223047}
+    .list{display:grid;gap:12px}
+    .list .item{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid #1f2733;border-radius:12px;background:#0f1420}
+    .badge{padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid #27334a;background:#121a29}
+    .tag{padding:2px 8px;border-radius:6px;background:#141b2a;border:1px solid #253145;color:#b3c3ff;font-size:12px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:12px;border:1px solid #1f2733}
+    .flex{display:flex;gap:12px;flex-wrap:wrap}
+    .search{display:flex;gap:8px}
+    input,select,textarea{background:#0f1420;border:1px solid #223047;color:var(--text);padding:10px 12px;border-radius:10px;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:#2a3a56}
+    .footer{margin-top:48px;padding:20px;text-align:center;color:#93a2b8}
+    .small{font-size:13px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!--
+  简介：
+  这是一个可免费上线的“队伍回忆站”静态网页（单文件）。
+  你可以：
+  1) 直接把此文件命名为 index.html，上传到 GitHub Pages / Netlify 免费上线。
+  2) 修改下方 TEAM_DATA 的内容（队名、成员、回忆、比赛），网页会自动渲染。
+  3) 把“贡献入口”设置为你的 Google 表单链接，让朋友能提交照片与故事。
+
+  免费上线方法（GitHub Pages）：
+  A. 注册 GitHub → New Repository → 名称：ml-memory-site → Add file → Upload files → 上传本 index.html → Commit。
+  B. 打开 Settings → Pages → 选择 “Deploy from a branch” → Branch 选 main /root → Save。
+  C. 稍等几秒，页面会显示一个 URL（你的免费站点链接）。
+
+  其他零代码方案：
+  - Google Sites（最简单）：sites.google.com → 新建 → 拖拽即可（可把表单、相册、表格嵌入）。
+  - Notion → Share to web（免费），也很快。
+  - 如果要留言墙等互动功能，可在“贡献入口”用 Google 表单收集，公开结果表可嵌入此页或贴链接。
+  -->
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo"></div>
+          <h1 id="teamName">我们的 ML 小队</h1>
+        </div>
+        <div class="tabs">
+          <a class="tab" href="#about">关于我们</a>
+          <a class="tab" href="#timeline">里程碑</a>
+          <a class="tab" href="#roster">队员</a>
+          <a class="tab" href="#matches">比赛记录</a>
+          <a class="tab" href="#gallery">相册</a>
+          <a class="tab" href="#contrib">贡献入口</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <span class="pill">纪念站 · 免费静态站点</span>
+        <h2 style="font-size:32px;margin:10px 0" id="teamMotto">“一起上分，一起挨打，更一起变强。”</h2>
+        <p class="muted">把我们的组队与磨难写进时间线，把每一场团战的喜怒哀乐放进相册，把每个队友的贡献刻在页面上。</p>
+        <div class="kpis" id="kpis"></div>
+        <div class="row" style="margin-top:16px">
+          <a class="btn" id="shareLink" target="_blank" rel="noreferrer">分享站点链接</a>
+          <a class="btn ghost" href="#contrib">提交你的回忆 →</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">快速说明</h3>
+        <ol class="muted">
+          <li>把本文件当 <b>index.html</b> 上传到 GitHub Pages 就能免费上线。</li>
+          <li>在下方 <b>TEAM_DATA</b> 修改数据（队名/队员/回忆/比赛/相册）。</li>
+          <li>把 <b>contrib.formUrl</b> 改成你的 Google 表单链接，就能收集大家的照片与故事。</li>
+        </ol>
+        <div class="two" style="margin-top:8px">
+          <div class="kpi"><div class="muted small">总比赛场次</div><b id="statMatches">-</b></div>
+          <div class="kpi"><div class="muted small">胜率</div><b id="statWinrate">-</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section">关于我们</h2>
+      <div class="card">
+        <p id="aboutText">我们是一群 Mobile Legends 的朋友，从开黑到吵架，从连败到连胜，重要的是彼此没有放弃。</p>
+        <div class="flex" id="roles"></div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2 class="section">里程碑 / 时间线</h2>
+      <div class="list" id="milestones"></div>
+    </section>
+
+    <section id="roster">
+      <h2 class="section">队员与贡献</h2>
+      <div class="grid" id="rosterGrid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));"></div>
+    </section>
+
+    <section id="matches">
+      <h2 class="section">比赛记录</h2>
+      <div class="card">
+        <div class="row" style="justify-content:space-between;gap:8px">
+          <div class="search">
+            <input id="q" placeholder="按英雄/对手/备注搜索…"/>
+            <select id="resFilter">
+              <option value="all">全部</option>
+              <option value="win">胜利</option>
+              <option value="lose">失败</option>
+            </select>
+            <button class="btn ghost" id="btnExport">导出 JSON</button>
+          </div>
+          <span class="muted small">提示：想多人共同维护？把 JSON 放进仓库或用 Google 表单收集。</span>
+        </div>
+      </div>
+      <div class="list" id="matchList"></div>
+    </section>
+
+    <section id="gallery">
+      <h2 class="section">相册</h2>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+
+    <section id="contrib">
+      <h2 class="section">贡献入口</h2>
+      <div class="card">
+        <p class="muted">把 <b>contrib.formUrl</b> 改成你的 Google 表单链接，大家就能上传截图、选择角色、写下当晚的名场面。也可以把你们的 Google 表格（只读）链接贴在下面给大家查看。</p>
+        <div class="row">
+          <a class="btn" id="formLink" target="_blank" rel="noreferrer">打开投稿表单</a>
+          <a class="btn ghost" id="sheetLink" target="_blank" rel="noreferrer">查看汇总表（可选）</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer small">© <span id="year"></span> <span id="footerTeam"></span> · 用爱与破防写成的回忆站</div>
+  </main>
+
+  <script>
+  // ====== 在这里编辑你们的数据 ======
+  const TEAM_DATA = {
+    teamName: "Kinta Five",
+    motto: "一起上分，一起挨打，更一起变强。",
+    about: "我们是一群来自 Perak / KL 的朋友，因为 ML 认识，也因为 ML 更熟。无论有没有打野，团就得开。",
+    roles: [
+      {role:"射手", hero:"Beatrix", note:"稳扎稳打，守护经济"},
+      {role:"坦克/辅助", hero:"Tigreal", note:"先手开团 别回头"},
+      {role:"法师", hero:"Lylia", note:"清线第一 支援第二"},
+      {role:"战士", hero:"Yu Zhong", note:"侧翼切入"},
+      {role:"战士(假打野)", hero:" Balmond", note:"反野/卡视野/抢龙"}
+    ],
+    milestones: [
+      {date:"2025-01-12", title:"建队第一晚", detail:"五排连胜 7 把，群里笑疯"},
+      {date:"2025-03-02", title:"第一次线下聚餐", detail:"Ipoh 老黄芽菜鸡 + 赛后复盘"},
+      {date:"2025-05-18", title:"痛失五连胜", detail:"沟通失误：谁先手？谁收割？从此开始有指挥"},
+      {date:"2025-08-09", title:"战术成型", detail:"假打野体系成熟：不刷→抓→抱团推"}
+    ],
+    roster: [
+      {name:"William", role:"指挥/射手", strength:["节奏感","判断力"], contributions:["建立战术模板","记录对局数据"], avatar:"https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?q=80&w=200&auto=format&fit=crop"},
+      {name:"Alex", role:"坦克", strength:["先手果断","抗压"], contributions:["开团宣言","草丛控制"], avatar:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop"},
+      {name:"Nelson", role:"法师", strength:["清线快","大招时机"], contributions:["兵线管理表"], avatar:"https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=200&auto=format&fit=crop"},
+      {name:"Ben", role:"战士", strength:["单带压制","切后"], contributions:["反野路线图"], avatar:"https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop"},
+      {name:"Ray", role:"战士(假打野)", strength:["游走抓人","控目标"], contributions:["龙坑运营"], avatar:"https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop"}
+    ],
+    matches: [
+      {date:"2025-08-08", vs:"SoloQ + 三排", result:"win", comp:"Beatrix / Tigreal / Lylia / Yu Zhong / Balmond", notes:"3 分钟抱团拿第一条龙，6 分钟两塔"},
+      {date:"2025-08-12", vs:"五排强队", result:"lose", comp:"Beatrix / Tigreal / Lylia / Yu Zhong / Balmond", notes:"指挥混乱，先手大招交错"},
+      {date:"2025-09-01", vs:"随机排位", result:"win", comp:"Beatrix / Tigreal / Pharsa / X.Borg / Balmond", notes:"换法师阵容也成立，核心仍是入侵+抱团"}
+    ],
+    gallery:[
+      "https://images.unsplash.com/photo-1520975961488-5f7f14f6e032?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1542759564-7ccbb6dc2b86?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=600&auto=format&fit=crop"
+    ],
+    contrib:{
+      formUrl:"https://docs.google.com/forms/", // ← 替换为你的 Google 表单链接
+      sheetUrl:"https://docs.google.com/spreadsheets/" // ← 可选：公开的只读表
+    }
+  };
+  // ====== 以上为可编辑区 ======
+
+  // 小工具函数
+  const $ = (q)=>document.querySelector(q);
+  const el = (tag,cls,html)=>{const e=document.createElement(tag); if(cls) e.className=cls; if(html!==undefined) e.innerHTML=html; return e;};
+
+  function render(){
+    // 基本信息
+    $('#teamName').textContent = TEAM_DATA.teamName;
+    $('#footerTeam').textContent = TEAM_DATA.teamName;
+    $('#teamMotto').textContent = '“'+TEAM_DATA.motto+'”';
+    $('#aboutText').textContent = TEAM_DATA.about;
+    $('#shareLink').href = location.href;
+    $('#formLink').href = TEAM_DATA.contrib.formUrl;
+    $('#sheetLink').href = TEAM_DATA.contrib.sheetUrl;
+    $('#year').textContent = new Date().getFullYear();
+
+    // 角色标签
+    const roles = $('#roles'); roles.innerHTML='';
+    TEAM_DATA.roles.forEach(r=>{
+      const t = el('span','tag',`${r.role} · ${r.hero} · ${r.note||''}`); roles.appendChild(t);
+    });
+
+    // 里程碑
+    const ms = $('#milestones'); ms.innerHTML='';
+    TEAM_DATA.milestones.sort((a,b)=>a.date.localeCompare(b.date)).forEach(m=>{
+      const it = el('div','item');
+      it.innerHTML = `<div class="badge">${m.date}</div><div><b>${m.title}</b><div class="muted">${m.detail||''}</div></div>`;
+      ms.appendChild(it);
+    });
+
+    // 队员
+    const rg = $('#rosterGrid'); rg.innerHTML='';
+    TEAM_DATA.roster.forEach(p=>{
+      const card = el('div','card');
+      card.innerHTML = `
+        <div class="row">
+          <img src="${p.avatar}" alt="${p.name}" style="width:52px;height:52px;border-radius:12px;border:1px solid #1f2733;object-fit:cover"/>
+          <div>
+            <b>${p.name}</b>
+            <div class="muted small">${p.role}</div>
+          </div>
+        </div>
+        <div style="margin-top:10px" class="muted small">擅长：${(p.strength||[]).join('、')||'—'}</div>
+        <div class="muted small">贡献：${(p.contributions||[]).join('、')||'—'}</div>
+      `;
+      rg.appendChild(card);
+    });
+
+    // 比赛记录 + 统计
+    const list = $('#matchList'); list.innerHTML='';
+    const q = $('#q').value?.trim().toLowerCase();
+    const res = $('#resFilter').value;
+
+    const filtered = TEAM_DATA.matches.filter(m=>{
+      const okRes = res==='all' || m.result===res;
+      const okQ = !q || `${m.vs} ${m.comp} ${m.notes}`.toLowerCase().includes(q);
+      return okRes && okQ;
+    });
+
+    let win=0; let total=TEAM_DATA.matches.length;
+    TEAM_DATA.matches.forEach(m=>{if(m.result==='win') win++;});
+    $('#statMatches').textContent = total;
+    $('#statWinrate').textContent = total? Math.round(win*100/total)+"%" : "-";
+
+    filtered.sort((a,b)=>a.date.localeCompare(b.date)).reverse().forEach(m=>{
+      const it = el('div','item');
+      const color = m.result==='win'? 'style="color:var(--ok)"': (m.result==='lose'? 'style="color:var(--err)"' : '');
+      it.innerHTML = `
+        <div class="badge">${m.date}</div>
+        <div style="flex:1">
+          <div class="row" style="justify-content:space-between">
+            <div><b ${color}>${m.result==='win'?'胜利 ✅':'失败 ❌'}</b> · 对手：${m.vs}</div>
+            <span class="muted small">阵容：${m.comp}</span>
+          </div>
+          <div class="muted small">备注：${m.notes||'—'}</div>
+        </div>`;
+      list.appendChild(it);
+    });
+
+    // KPI 小卡片（英雄/成员数量等）
+    const kpis = $('#kpis'); kpis.innerHTML='';
+    const uniqHeroes = new Set(TEAM_DATA.roles.map(r=>r.hero));
+    kpis.appendChild(el('div','kpi',`<div class="muted small">成员数</div><b>${TEAM_DATA.roster.length}</b>`));
+    kpis.appendChild(el('div','kpi',`<div class="muted small">常用英雄</div><b>${uniqHeroes.size}</b>`));
+    kpis.appendChild(el('div','kpi',`<div class="muted small">相片数量</div><b>${TEAM_DATA.gallery.length}</b>`));
+
+    // 相册
+    const gg = $('#galleryGrid'); gg.innerHTML='';
+    TEAM_DATA.gallery.forEach(src=>{
+      const img = el('img'); img.src = src; img.alt = 'memory'; gg.appendChild(img);
+    });
+  }
+
+  // 导出 JSON（便于多人协作：把 matches / milestones 等拷到表格或仓库）
+  function exportJSON(){
+    const data = JSON.stringify(TEAM_DATA, null, 2);
+    const blob = new Blob([data], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download='team-data.json'; a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // 事件绑定
+  $('#q').addEventListener('input', render);
+  $('#resFilter').addEventListener('change', render);
+  $('#btnExport').addEventListener('click', exportJSON);
+
+  // 启动
+  render();
+  </script>
+</body>
+</html>
